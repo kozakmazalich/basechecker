@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="fc:frame" content="vNext" />
+    <meta property="fc:frame:image" content="https://i.imgur.com/3QZ7H0q.png" />
+    <meta property="fc:frame:button:1" content="Check Allocation" />
+    <meta property="fc:frame:post_url" content="https://your-app-url.com/api/frame" />
     <title>Base Airdrop Checker</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min-code">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -19,6 +23,8 @@
             line-height: 1.6;
             min-height: 100vh;
             padding: 20px;
+            max-width: 100%;
+            overflow-x: hidden;
         }
         
         .container {
@@ -335,6 +341,10 @@
             color: #888;
         }
         
+        .farcaster-frame {
+            display: none;
+        }
+        
         @media (max-width: 768px) {
             .input-wrapper {
                 flex-direction: column;
@@ -468,6 +478,14 @@
         </div>
     </div>
 
+    <!-- Farcaster Frame Elements (hidden in standalone mode) -->
+    <div class="farcaster-frame">
+        <meta property="fc:frame" content="vNext" />
+        <meta property="fc:frame:image" content="https://i.imgur.com/3QZ7H0q.png" />
+        <meta property="fc:frame:button:1" content="Check Allocation" />
+        <meta property="fc:frame:post_url" content="https://your-app-url.com/api/frame" />
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const checkBtn = document.getElementById('check-btn');
@@ -496,6 +514,31 @@
                 'https://base.publicnode.com',
                 'https://1rpc.io/base'
             ];
+
+            // Check if we're running in a Farcaster frame
+            function isFarcasterFrame() {
+                return window.location !== window.parent.location || 
+                       document.referrer.includes('warpcast.com') ||
+                       navigator.userAgent.includes('Farcaster');
+            }
+
+            // Handle Farcaster frame interaction
+            function handleFarcasterFrameInteraction() {
+                if (isFarcasterFrame()) {
+                    // In a frame, we would typically send a POST request to the frame's post_url
+                    // For now, we'll just simulate the behavior
+                    console.log("Running in Farcaster frame");
+                    
+                    // If there's a wallet address in the URL parameters, use it
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const address = urlParams.get('address');
+                    
+                    if (address) {
+                        walletInput.value = address;
+                        checkAllocation(address);
+                    }
+                }
+            }
 
             async function fetchBaseChainData(walletAddress) {
                 try {
@@ -710,19 +753,7 @@
                 return ethBal >= 0.001 && txCount >= 1;
             }
 
-            checkBtn.addEventListener('click', async function() {
-                const address = walletInput.value.trim();
-
-                if (!address) {
-                    alert('Please enter a wallet address');
-                    return;
-                }
-
-                if (!address.startsWith('0x') || address.length !== 42) {
-                    alert('Please enter a valid Ethereum wallet address (0x...)');
-                    return;
-                }
-
+            async function checkAllocation(address) {
                 loading.style.display = 'block';
                 result.style.display = 'none';
                 apiStatus.textContent = '';
@@ -782,8 +813,27 @@
 
                 loading.style.display = 'none';
                 result.style.display = 'block';
+            }
+
+            checkBtn.addEventListener('click', function() {
+                const address = walletInput.value.trim();
+
+                if (!address) {
+                    alert('Please enter a wallet address');
+                    return;
+                }
+
+                if (!address.startsWith('0x') || address.length !== 42) {
+                    alert('Please enter a valid Ethereum wallet address (0x...)');
+                    return;
+                }
+
+                checkAllocation(address);
             });
 
+            // Initialize
+            handleFarcasterFrameInteraction();
+            
             // Example addresses for testing
             walletInput.placeholder = 'Try any Base wallet address';
             walletInput.value = '0x742d35Cc6634C0532925a3b8D4EDa5b3b6d9c8d7';
