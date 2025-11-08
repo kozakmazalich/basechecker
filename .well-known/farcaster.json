@@ -1,0 +1,99 @@
+{
+  "accountAssociation": {
+    "header": "Base Airdrop Checker wants to associate with your Farcaster account",
+    "payload": "To check your airdrop eligibility, Base Airdrop Checker needs to verify your on-chain activity and Farcaster presence.",
+    "version": 1,
+    "chainId": 8453,
+    "name": "Base Airdrop Checker",
+    "contractAddress": "0x00000000fcaf86937e41ba038b4fa40baa4b780a"
+  },
+  "frame": {
+    "version": "1",
+    "name": "Base Airdrop Checker",
+    "description": "Check your Base ecosystem airdrop eligibility and allocation based on on-chain activity",
+    "iconUrl": "https://basechecker.vercel.app/icon.png",
+    "splashImageUrl": "https://basechecker.vercel.app/splash.png",
+    "splashBackgroundColor": "#0a0b0d",
+    "homeUrl": "https://basechecker.vercel.app/",
+    "imageUrl": "https://basechecker.vercel.app/frame-image.png",
+    "buttonTitle": "Check Allocation",
+    "splashTextColor": "#ffffff",
+    "privacyPolicyUrl": "https://basechecker.vercel.app/privacy",
+    "termsOfServiceUrl": "https://basechecker.vercel.app/terms"
+  },
+  "permissions": [
+    {
+      "type": "read_frame",
+      "description": "Read your frame interactions"
+    },
+    {
+      "type": "read_profile",
+      "description": "Access your Farcaster profile information"
+    },
+    {
+      "type": "read_links",
+      "description": "Read your posted links and on-chain activity"
+    }
+  ],
+  "context": "farcaster_mini_app",
+  "supportedFrames": [
+    {
+      "name": "main",
+      "url": "https://basechecker.vercel.app/",
+      "imageUrl": "https://basechecker.vercel.app/frame-image.png",
+      "buttonTitle": "Check Airdrop"
+    }
+  ],
+  "build": {
+    "buildCommand": "npm run build",
+    "outputDirectory": "dist"
+  },
+  "app": {
+    "name": "Base Airdrop Checker",
+    "description": "Check your eligibility for Base ecosystem airdrops based on your on-chain activity and Farcaster engagement",
+    "icon": "https://basechecker.vercel.app/icon.png",
+    "splash": {
+      "image": "https://basechecker.vercel.app/splash.png",
+      "backgroundColor": "#0a0b0d",
+      "textColor": "#ffffff"
+    },
+    "url": "https://basechecker.vercel.app/",
+    "privacyPolicy": "https://basechecker.vercel.app/privacy",
+    "termsOfService": "https://basechecker.vercel.app/terms"
+  },
+  "webhook": {
+    "url": "https://basechecker.vercel.app/api/webhook",
+    "events": [
+      "frame_interaction",
+      "user_connect",
+      "user_disconnect"
+    ]
+  },
+  "chains": [
+    {
+      "id": 8453,
+      "name": "Base Mainnet",
+      "rpcUrl": "https://mainnet.base.org"
+    }
+  ],
+  "features": {
+    "frame": true,
+    "miniApp": true,
+    "onChain": true,
+    "social": true
+  },
+  "category": "finance",
+  "tags": [
+    "airdrop",
+    "base",
+    "ethereum",
+    "defi",
+    "rewards"
+  ],
+  "version": "1.0.0",
+  "developer": {
+    "name": "Base Checker Team",
+    "url": "https://basechecker.vercel.app",
+    "farcaster": "basechecker"
+  }
+}
