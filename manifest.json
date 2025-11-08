@@ -1,0 +1,7 @@
+{
+  "name": "Base Airdrop Checker",
+  "description": "Check your Base airdrop eligibility",
+  "iconUrl": "https://basechecker.vercel.app/icon.png",
+  "url": "https://basechecker.vercel.app/",
+  "permissions": ["read_frame"]
+}
