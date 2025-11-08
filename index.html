@@ -836,7 +836,23 @@
             
             // Example addresses for testing
             walletInput.placeholder = 'Try any Base wallet address';
-            walletInput.value = '0x742d35Cc6634C0532925a3b8D4EDa5b3b6d9c8d7';
+            walletInput.value = '0x';
+        // Initialize when DOM is loaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializeBaseApp);
+    } else {
+      initializeBaseApp();
+    }
+  </script>
+  <script type="module">
+  import { sdk } from "https://esm.sh/@farcaster/miniapp-sdk";
+
+  // Tell Base that your app is ready to show
+  sdk.actions.ready().catch(console.error);
+</script>
+
+</body>
+</html>
         });
     </script>
 </body>
