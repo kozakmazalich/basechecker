@@ -1,7 +1,18 @@
 {
   "name": "Base Airdrop Checker",
-  "description": "Check your Base airdrop eligibility",
+  "description": "Check your Base ecosystem airdrop eligibility and allocation",
   "iconUrl": "https://basechecker.vercel.app/icon.png",
+  "splashImageUrl": "https://basechecker.vercel.app/splash.png",
   "url": "https://basechecker.vercel.app/",
-  "permissions": ["read_frame"]
+  "category": "finance",
+  "permissions": ["read_frame", "read_profile"],
+  "version": "1.0.0",
+  "accountAssociation": {
+    "header": "eyJmaWQiOjUwMjE3NywidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDdDNTk3YjYwMjRENThlYzI1MzIxMUYyQzM4RjU5MGZkMDYwNjhGZkEifQ",
+    "payload": "eyJkb21haW4iOiJiYXNlY2hlY2tlci52ZXJjZWwuYXBwIn0",
+    "signature": "b5M87GiCl+4t8XGeWdjX6ygCs+DJOzIjG8eXg1K+Rsk2Cli7w8V3QHUkokZjuFODo/bDaXzX+4YRJumLAybYWxs="
+  },
+  "baseBuilder": {
+    "ownerAddress": "0x0A4e5886f09997a3c71767736bb0c33D43a12B39"
+  }
 }
