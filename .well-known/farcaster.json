@@ -1,11 +1,9 @@
 {
-  "accountAssociation": {
-    "header": "Base Airdrop Checker wants to associate with your Farcaster account",
-    "payload": "To check your airdrop eligibility, Base Airdrop Checker needs to verify your on-chain activity and Farcaster presence.",
-    "version": 1,
-    "chainId": 8453,
-    "name": "Base Airdrop Checker",
-    "contractAddress": "0x00000000fcaf86937e41ba038b4fa40baa4b780a"
+   "accountAssociation": {
+    "header": "eyJmaWQiOjUwMjE3NywidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDdDNTk3YjYwMjRENThlYzI1MzIxMUYyQzM4RjU5MGZkMDYwNjhGZkEifQ",
+    "payload": "eyJkb21haW4iOiJiYXNlY2hlY2tlci52ZXJjZWwuYXBwIn0",
+    "signature": "b5M87GiCl+4t8XGeWdjX6ygCs+DJOzIjG8eXg1K+Rsk2Cli7w8V3QHUkokZjuFODo/bDaXzX+4YRJumLAybYWxs="
+  }
   },
   "frame": {
     "version": "1",
