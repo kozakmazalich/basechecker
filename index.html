@@ -6,10 +6,11 @@
     <meta property="fc:frame" content="vNext" />
     <meta property="fc:frame:image" content="https://i.imgur.com/3QZ7H0q.png" />
     <meta property="fc:frame:button:1" content="Check Allocation" />
-    <meta property="fc:frame:post_url" content="https://your-app-url.com/api/frame" />
+    <meta property="fc:frame:post_url" content="https://basechecker.vercel.app/api/frame" />
     <title>Base Airdrop Checker</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Your existing CSS styles remain the same */
         * {
             margin: 0;
             padding: 0;
@@ -483,7 +484,7 @@
         <meta property="fc:frame" content="vNext" />
         <meta property="fc:frame:image" content="https://i.imgur.com/3QZ7H0q.png" />
         <meta property="fc:frame:button:1" content="Check Allocation" />
-        <meta property="fc:frame:post_url" content="https://your-app-url.com/api/frame" />
+        <meta property="fc:frame:post_url" content="https://basechecker.vercel.app/api/frame" />
     </div>
 
     <script>
@@ -525,8 +526,6 @@
             // Handle Farcaster frame interaction
             function handleFarcasterFrameInteraction() {
                 if (isFarcasterFrame()) {
-                    // In a frame, we would typically send a POST request to the frame's post_url
-                    // For now, we'll just simulate the behavior
                     console.log("Running in Farcaster frame");
                     
                     // If there's a wallet address in the URL parameters, use it
@@ -606,15 +605,10 @@
             }
 
             function generateRealisticBuildActivity(ethBal, txCount, walletAddress) {
-                // Generate realistic build activity based on wallet patterns
                 const walletHash = walletAddress.slice(2, 10);
                 const seed = parseInt(walletHash, 16);
-                
-                // More ETH = more builder activity generally
                 const buildMultiplier = Math.min(3, Math.max(0.1, ethBal * 5));
-                
-                // Check if wallet is likely a builder (based on transaction patterns)
-                const isBuilder = (seed % 10) >= 7; // 30% chance of being a builder
+                const isBuilder = (seed % 10) >= 7;
                 
                 return {
                     contractDeployments: Math.floor((seed % 3) * buildMultiplier),
@@ -622,8 +616,8 @@
                     tokensCreated: isBuilder ? Math.floor((seed % 5) * buildMultiplier) : 0,
                     nftsCreated: isBuilder ? Math.floor((seed % 8) * buildMultiplier) : 0,
                     appsDeployed: isBuilder ? Math.floor((seed % 2) * buildMultiplier) : 0,
-                    isBaseAppUser: (seed % 4) >= 2, // 50% chance
-                    isFarcasterUser: (seed % 5) >= 3 // 40% chance
+                    isBaseAppUser: (seed % 4) >= 2,
+                    isFarcasterUser: (seed % 5) >= 3
                 };
             }
 
@@ -639,7 +633,6 @@
                 const isBaseApp = walletData.isBaseAppUser;
                 const isFarcaster = walletData.isFarcasterUser;
                 
-                // Scoring system (0-100 points total)
                 let scores = {
                     ethBalance: 0,
                     transactions: 0,
@@ -670,22 +663,18 @@
                 if (contracts >= 20) scores.contractActivity += 4;
                 scores.contractActivity = Math.min(20, scores.contractActivity);
                 
-                // Build Score (0-40 points) - Most important for builders
-                // Token creation
+                // Build Score (0-40 points)
                 if (tokens >= 1) scores.buildScore += 8;
                 if (tokens >= 3) scores.buildScore += 7;
                 if (tokens >= 5) scores.buildScore += 5;
                 
-                // NFT creation
                 if (nfts >= 1) scores.buildScore += 6;
                 if (nfts >= 3) scores.buildScore += 4;
                 if (nfts >= 5) scores.buildScore += 4;
                 
-                // App deployments
                 if (apps >= 1) scores.buildScore += 10;
                 if (apps >= 2) scores.buildScore += 6;
                 
-                // Social/Platform bonuses
                 if (isBaseApp) scores.buildScore += 5;
                 if (isFarcaster) scores.buildScore += 5;
                 
@@ -704,16 +693,10 @@
             }
 
             function calculateAllocation(score) {
-                // Convert score (0-100) to allocation ($1,000 - $25,000)
-                const minAllocation = 1000; // $1,000
-                const maxAllocation = 25000; // $25,000
-                
-                // Exponential scaling - higher scores get disproportionately more
+                const minAllocation = 1000;
+                const maxAllocation = 25000;
                 const baseAllocation = minAllocation + (score / 100) * (maxAllocation - minAllocation);
-                
-                // Apply exponential curve for top performers
                 const exponentialBonus = Math.pow(score / 100, 2) * (maxAllocation - minAllocation) * 0.3;
-                
                 return Math.round(baseAllocation + exponentialBonus);
             }
 
@@ -745,11 +728,8 @@
 
             function isEligible(walletData) {
                 if (!walletData.success) return false;
-                
                 const ethBal = parseFloat(walletData.ethBalance);
                 const txCount = walletData.transactionCount;
-                
-                // Minimum requirements
                 return ethBal >= 0.001 && txCount >= 1;
             }
 
@@ -780,7 +760,6 @@
                         buildBreakdown.textContent = score.breakdown.buildScore;
                         totalScore.textContent = score.total + '/100';
                         
-                        // Update social badges
                         updateSocialBadges(score.social);
                         
                         if (eligible) {
@@ -836,20 +815,16 @@
             
             // Example addresses for testing
             walletInput.placeholder = 'Try any Base wallet address';
-            walletInput.value = '0x';
-        // Initialize when DOM is loaded
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initializeBaseApp);
-    } else {
-      initializeBaseApp();
-    }
-  </script>
-  <script type="module">
-  import { sdk } from "https://esm.sh/@farcaster/miniapp-sdk";
+            walletInput.value = '0x742d35Cc6634C0532925a3b8D4EDa5b3b6d9c8d7';
+        }); // This was missing - closing the main event listener
+    </script>
 
-  // Tell Base that your app is ready to show
-  sdk.actions.ready().catch(console.error);
-</script>
-
+    <!-- Base MiniApp SDK -->
+    <script type="module">
+        import { sdk } from "https://esm.sh/@farcaster/miniapp-sdk";
+        
+        // Initialize Base MiniApp SDK
+        sdk.actions.ready().catch(console.error);
+    </script>
 </body>
 </html>
