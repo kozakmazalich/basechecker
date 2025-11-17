@@ -10,7 +10,7 @@
     "subtitle": "Check Base airdrop eligibility",
     "description": "Check your Base ecosystem airdrop eligibility and allocation based on on-chain activity",
     "iconUrl": "https://basechecker.vercel.app/icon.png",
-    "imageUrl": "https://basechecker.vercel.app/frame-image.png",
+    "imageUrl": "https://basechecker.vercel.app/preview.png",
     "splashImageUrl": "https://basechecker.vercel.app/splash.png",
     "splashBackgroundColor": "#0a0b0d",
     "homeUrl": "https://basechecker.vercel.app/",
