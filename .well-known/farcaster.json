@@ -5,17 +5,15 @@
     "signature": "b5M87GiCl+4t8XGeWdjX6ygCs+DJOzIjG8eXg1K+Rsk2Cli7w8V3QHUkokZjuFODo/bDaXzX+4YRJumLAybYWxs="
   },
   "miniapp": {
-    "version": "1.0.0",
     "name": "Base Airdrop Checker",
-    "subtitle": "Check Base airdrop eligibility",
     "description": "Check your Base ecosystem airdrop eligibility and allocation based on on-chain activity",
     "iconUrl": "https://basechecker.vercel.app/icon.png",
-    "imageUrl": "https://basechecker.vercel.app/preview.png",
     "splashImageUrl": "https://basechecker.vercel.app/splash.png",
     "splashBackgroundColor": "#0a0b0d",
     "homeUrl": "https://basechecker.vercel.app/",
-    "primaryCategory": "finance",
-    "tags": ["airdrop", "base", "ethereum", "defi", "rewards"]
+    "imageUrl": "https://basechecker.vercel.app/preview.png",
+    "buttonTitle": "Check Allocation",
+    "splashTextColor": "#ffffff"
   },
   "baseBuilder": {
     "ownerAddress": "0x0A4e5886f09997a3c71767736bb0c33D43a12B39"
