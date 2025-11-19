@@ -17,7 +17,6 @@
     "version": "1",
     "category": "finance",
     "primaryCategory": "entertainment",
-    "tags": "base", "airdrop"
   },
   "baseBuilder": {
     "ownerAddress": "0x0A4e5886f09997a3c71767736bb0c33D43a12B39"
