@@ -13,7 +13,8 @@
     "homeUrl": "https://basechecker.vercel.app/",
     "imageUrl": "https://basechecker.vercel.app/preview.png",
     "buttonTitle": "Check Allocation",
-    "splashTextColor": "#ffffff"
+    "splashTextColor": "#ffffff",
+    "version": "1.0.0"
   },
   "baseBuilder": {
     "ownerAddress": "0x0A4e5886f09997a3c71767736bb0c33D43a12B39"
